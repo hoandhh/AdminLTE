@@ -1,4 +1,4 @@
-<header class="main-header" th:fragment="header">
+<header class="main-header" th:fragment="header" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <!-- Logo -->
     <a href="/admin" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
@@ -105,7 +105,7 @@
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img th:src="@{/assets/images/user2-160x160.jpg}" class="user-image" alt="User Image">
-                        <span class="hidden-xs">Doan Huu Hoan</span>
+                        <span sec:authentication="name"></span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
@@ -138,7 +138,7 @@
                                 <a href="#" class="btn btn-default btn-flat">Profile</a>
                             </div>
                             <div class="pull-right">
-                                <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                <a th:href="@{/admin-logout}" class="btn btn-default btn-flat">Sign out</a>
                             </div>
                         </li>
                     </ul>
