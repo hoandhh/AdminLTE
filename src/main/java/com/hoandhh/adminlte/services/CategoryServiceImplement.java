@@ -47,6 +47,13 @@ public class CategoryServiceImplement implements CategoryService {
 
     @Override
     public Boolean delete(Integer id) {
-        return null;
+        try {
+            this.categoryRepository.delete(findById(id));
+            return true;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }

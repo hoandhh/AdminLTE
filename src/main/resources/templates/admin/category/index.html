@@ -47,7 +47,7 @@
                             <th style="width: 10px">ID</th>
                             <th>Category Name</th>
                             <th>Status</th>
-                            <th style="width: 40px">Action</th>
+                            <th style="width: 200px">Action</th>
                         </tr>
                         <tr th:each="category : ${list}">
                             <td th:text="${category.categoryId}"></td>
@@ -61,6 +61,10 @@
                                 <span class="label label-danger">
                                     Ẩn
                                 </span>
+                            </td>
+                            <td>
+                                <a th:href="@{/admin/edit-category/{id}(id=${category.getCategoryId()})}" class="btn btn-success">Edit</a>
+                                <a th:href="@{/admin/delete-category/{id}(id=${category.getCategoryId()})}" onclick="return confirm('Bạn chắc chắn muốn xoá sản phẩm này không?')" class="btn btn-danger">Delete</a>
                             </td>
 
                         </tr>

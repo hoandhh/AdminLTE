@@ -38,7 +38,8 @@
                         <h3 class="box-title">Quick Example</h3>
                     </div>
 
-                    <form role="form" method="post" th:action="@{/admin/add-category}" th:object="${category}">
+                    <form role="form" method="post" th:action="@{/admin/edit-category}" th:object="${category}">
+                        <input type="hidden" class="form-control" id="exampleInputEmail1" th:field="*{categoryId}">
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Category Name</label>
@@ -59,9 +60,7 @@
                                         Hidden
                                     </label>
                                 </div>
-
                             </div>
-
                         </div>
 
                         <div class="box-footer">
