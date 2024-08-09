@@ -56,4 +56,9 @@ public class CategoryServiceImplement implements CategoryService {
         }
         return false;
     }
+
+    @Override
+    public List<Category> searchCategory(String keyword) {
+        return this.categoryRepository.searchCategory(keyword);
+    }
 }

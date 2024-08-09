@@ -14,4 +14,6 @@ public interface CategoryService {
     Boolean update(Category category);
 
     Boolean delete(Integer id);
+
+    List<Category> searchCategory(String keyword);
 }
