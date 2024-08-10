@@ -3,6 +3,9 @@ package com.hoandhh.adminlte.services;
 import com.hoandhh.adminlte.models.Category;
 import com.hoandhh.adminlte.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -50,8 +53,7 @@ public class CategoryServiceImplement implements CategoryService {
         try {
             this.categoryRepository.delete(findById(id));
             return true;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return false;
@@ -60,5 +62,11 @@ public class CategoryServiceImplement implements CategoryService {
     @Override
     public List<Category> searchCategory(String keyword) {
         return this.categoryRepository.searchCategory(keyword);
+    }
+
+    @Override
+    public Page<Category> getAll(Integer pageNo) {
+        Pageable pageable = PageRequest.of(pageNo - 1, 4);
+        return this.categoryRepository.findAll(pageable);
     }
 }

@@ -3,6 +3,7 @@ package com.hoandhh.adminlte.controllers.admin;
 import com.hoandhh.adminlte.models.Category;
 import com.hoandhh.adminlte.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,11 +19,13 @@ public class CategoryController {
     private CategoryService categoryService;
 
     @GetMapping("/category")
-    public String category(Model model, @Param("keyword") String keyword) {
-        List<Category> list = this.categoryService.getAll();
-        if (keyword != null) {
-            list = this.categoryService.searchCategory(keyword);
-        }
+    public String category(Model model, @Param("keyword") String keyword, @RequestParam(name = "pageNo", defaultValue = "1") Integer pageNo) {
+        Page<Category> list = this.categoryService.getAll(pageNo);
+//        if (keyword != null) {
+//            list = this.categoryService.searchCategory(keyword);
+//        }
+        model.addAttribute("totalPage", list.getTotalPages());
+        model.addAttribute("currentPage", pageNo);
         model.addAttribute("list", list);
         return "admin/category/index";
     }
