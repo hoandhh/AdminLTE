@@ -19,4 +19,7 @@ public interface CategoryService {
     List<Category> searchCategory(String keyword);
 
     Page<Category> getAll(Integer pageNo);
+
+    Page<Category> searchCategory(String keyword, Integer pageNo);
+
 }
